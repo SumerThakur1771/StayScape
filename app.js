@@ -137,6 +137,17 @@ app.post(
   })
 );
 
+//Delete Review route
+app.delete(
+  "/listings/:id/reviews/:reviewId",
+  wrapAsync(async (req, res) => {
+    let { id, reviewId } = req.params;
+    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });//this is must to remove the objectId of review from listing collection
+    await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/listings/${id}`);
+  })
+);
+
 // app.get("/testListing", async (req, res) => {
 //   let sampleListing = new Listing({
 //     title: "My New Villa",
