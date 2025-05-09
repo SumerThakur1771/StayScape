@@ -6,7 +6,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-
+const session = require("express-session");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -33,10 +33,17 @@ async function main() {
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
 
+const sessionOptions = {
+  secret: "mysupersecretcode",
+  resave: false,
+  saveUninitialized: true,
+};
+
+app.use(session(sessionOptions));
+
 app.get("/", (req, res) => {
   res.send("This is main route");
 });
-
 
 app.all(/./, (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
