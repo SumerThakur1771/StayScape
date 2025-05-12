@@ -8,7 +8,9 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
-
+const passport = require("passport");
+const localStrategy = require("passport-local");
+const User = require("./models/user.js");
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
 
@@ -46,7 +48,6 @@ app.get("/", (req, res) => {
   res.send("This is main route");
 });
 
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -54,7 +55,7 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
-})
+});
 
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
