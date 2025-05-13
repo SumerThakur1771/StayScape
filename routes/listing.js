@@ -26,6 +26,10 @@ router.get(
 
 //New route
 router.get("/new", (req, res) => {
+  if (!isAuthenticated()) {
+    req.flash("error", "you must be logged in to create listing!");
+    return res.redirect("/listings");
+  }
   res.render("listings/new.ejs");
 });
 
