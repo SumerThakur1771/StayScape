@@ -31,12 +31,13 @@
         </div>
 
         <div class="mb-3">
+          Original Listing Image <br>
+          <img src="<%= originalImageUrl %>" />
+        </div>
+
+        <div class="mb-3">
           <label for="image" class="form-label">Upload New Image</label>
-          <input
-            name="listing[image]"
-            type="file"
-            class="form-control"
-          />
+          <input name="listing[image]" type="file" class="form-control" />
         </div>
 
         <div class="row">
@@ -61,7 +62,9 @@
               class="form-control"
               required
             />
-            <div class="invalid-feedback">Please enter a valid country name</div>
+            <div class="invalid-feedback">
+              Please enter a valid country name
+            </div>
           </div>
         </div>
 
