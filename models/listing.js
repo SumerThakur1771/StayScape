@@ -11,12 +11,12 @@ const listingSchema = new Schema({
   image: {
     url: {
       type: String,
-      default:
-        "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?...",
-      set: (v) =>
-        v === ""
-          ? "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?..."
-          : v,
+      // default:
+      //   "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?...",
+      // set: (v) =>
+      //   v === ""
+      //     ? "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?..."
+      //     : v,
     },
     filename: String,
   },
