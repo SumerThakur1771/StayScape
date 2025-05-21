@@ -150,6 +150,33 @@ body {
   cursor: pointer;
 }
 
+/* Ensure anchor styles inside filters don't override icon/label color */
+#filters a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#filters a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Preserve original gray icon/text */
+#filters .filter i,
+#filters .filter p {
+  color: #363636;
+}
+
+/* Highlight selected category in blue */
+#filters .filter.active-filter i,
+#filters .filter.active-filter p {
+  color: #363636;
+}
+
+/* Maintain full opacity for active filter */
+#filters .filter.active-filter {
+  opacity: 1 !important;
+}
 .tax-info{
   display: none;
 }
@@ -163,4 +190,13 @@ body {
   display: flex;
   align-items: center;
   margin-top: 1rem;
+}
+
+.badge {
+  background-color: #363636;
+  color: white;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  border-radius: 1rem;
+  padding: 0.5em 0.8em !important;
 }

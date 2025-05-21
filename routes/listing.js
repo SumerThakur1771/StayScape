@@ -35,6 +35,11 @@ router
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
+router.get(
+  "/category/:category",
+  wrapAsync(listingController.filterByCategory)
+);
+
 //edit route
 router.get(
   "/:id/edit",

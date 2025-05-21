@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
+const { required } = require("joi");
 
 const listingSchema = new Schema({
   title: {
@@ -44,8 +45,8 @@ const listingSchema = new Schema({
       required: true,
     },
   },
-  category: {
-    type: String,
+  categories: {
+    type: [String],
     enum: [
       "Trending",
       "Rooms",
@@ -59,7 +60,13 @@ const listingSchema = new Schema({
       "Domes",
       "Boats",
     ],
-    required: true,
+    validate: {
+      validator: function (arr) {
+        return arr.length > 0;
+      },
+      message: "At least one category must be selected.",
+    },
+    default: [],
   },
 });
 

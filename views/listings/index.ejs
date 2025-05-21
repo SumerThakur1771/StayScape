@@ -1,4 +1,4 @@
-<% layout("/layouts/boilerplate") %>
+<!-- <% layout("/layouts/boilerplate") %>
 <body>
   <div id="filters">
     <div class="filter">
@@ -42,7 +42,7 @@
       <p>Domes</p>
     </div>
     <div class="filter">
-      <div><i class="fa-solid fa-ship"></i></div>
+      <div><i class="fa-solid fa-shi"></i></div>
       <p>Boats</p>
     </div>
 
@@ -94,6 +94,83 @@
       } else {
         info.style.display = "none";
       }
+    }
+  });
+</script> -->
+
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div id="filters">
+  <% 
+    const filters = [
+      { label: "Trending", icon: "fa-fire", style: "fa-solid" },
+      { label: "Rooms", icon: "fa-bed", style: "fa-solid" },
+      { label: "Iconic Cities", icon: "fa-mountain-city", style: "fa-solid" },
+      { label: "Mountains", icon: "fa-mountain", style: "fa-solid" },
+      { label: "Castles", icon: "fa-fort-awesome", style: "fa-brands" },
+      { label: "Amazing Pools", icon: "fa-person-swimming", style: "fa-solid" },
+      { label: "Camping", icon: "fa-campground", style: "fa-solid" },
+      { label: "Farms", icon: "fa-cow", style: "fa-solid" },
+      { label: "Arctic", icon: "fa-snowflake", style: "fa-regular" },
+      { label: "Domes", icon: "fa-igloo", style: "fa-solid" },
+      { label: "Boats", icon: "fa-ship", style: "fa-solid" },
+    ];
+  %>
+
+  <% filters.forEach(filter => { %>
+    <a href="/listings?<%= selectedCategory === filter.label ? '' : `category=${filter.label}` %>">
+      <div class="filter <%= selectedCategory === filter.label ? 'active-filter' : '' %>">
+        <div><i class="<%= filter.style %> <%= filter.icon %>"></i></div>
+        <p><%= filter.label %></p>
+      </div>
+    </a>
+  <% }); %>
+
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="switchCheckDefault"
+      />
+      <label class="form-check-label" for="switchCheckDefault">
+        Display total after taxes
+      </label>
+    </div>
+  </div>
+</div>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-col-sm-1 mt-3">
+    <% for(let listing of allListings){ %>
+    <a href="/listings/<%= listing._id %>" class="listing-link">
+      <div class="card col listing-card">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listing_image"
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b> <br />
+            ₹<%= listing.price.toLocaleString("en-IN") %> / night
+            <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+</body>
+
+<script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      info.style.display = info.style.display !== "inline" ? "inline" : "none";
     }
   });
 </script>
