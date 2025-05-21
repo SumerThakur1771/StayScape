@@ -9,10 +9,29 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 // };
 
 module.exports.index = async (req, res) => {
-  const { category } = req.query;
-  const filter = category ? { categories: category } : {};
+  // const { category } = req.query;
+  // const filter = category ? { categories: category } : {};
+  // const allListings = await Listing.find(filter);
+  // res.render("listings/index", { allListings, selectedCategory: category });
+
+  const { category, search } = req.query;
+  let filter = {};
+
+  if (category) {
+    filter.categories = category;
+  }
+
+  if (search) {
+    const searchRegex = new RegExp(search, "i"); // case-insensitive
+    filter.location = searchRegex;
+  }
+
   const allListings = await Listing.find(filter);
-  res.render("listings/index", { allListings, selectedCategory: category });
+  res.render("listings/index", {
+    allListings,
+    selectedCategory: category || null,
+    searchTerm: search || "",
+  });
 };
 
 module.exports.renderNewForm = (req, res) => {
