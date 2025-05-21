@@ -7,7 +7,7 @@ StayScape is a full-stack travel accommodation platform that allows users to exp
 ## Live Demo
 
 Visit the deployed application: [StayScape on Render](https://stayscape-v7dj.onrender.com)
-Click on explore text or icon to explore the site!
+- Click on explore text or icon to explore the site!
 ---
 
 ## Features
@@ -72,3 +72,31 @@ Click on explore text or icon to explore the site!
 ---
 
 ## Project Structure
+MajorProject/
+├── models/
+│ └── listing.js
+├── routes/
+│ └── listings.js
+├── controllers/
+│ └── listings.js
+├── views/
+│ ├── listings/
+│ ├── partials/
+│ └── layouts/
+├── public/
+│ ├── stylesheets/
+│ └── JS scripts
+├── utils/
+│ └── geocoder.js
+├── .env
+├── app.js
+└── README.md
+
+---
+
+## How to Run Locally
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/your-username/StayScape.git
+cd StayScape
