@@ -100,3 +100,7 @@ MajorProject/
 ```bash
 git clone https://github.com/your-username/StayScape.git
 cd StayScape
+
+2. **Install Dependencies**
+```bash
+npm install
