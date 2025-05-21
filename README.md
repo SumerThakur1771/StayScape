@@ -72,35 +72,87 @@ Visit the deployed application: [StayScape on Render](https://stayscape-v7dj.onr
 ---
 
 ## Project Structure
+
+```
 MajorProject/
 ├── models/
-│ └── listing.js
+│   └── listing.js
 ├── routes/
-│ └── listings.js
+│   └── listings.js
 ├── controllers/
-│ └── listings.js
+│   └── listings.js
 ├── views/
-│ ├── listings/
-│ ├── partials/
-│ └── layouts/
+│   ├── listings/
+│   ├── partials/
+│   └── layouts/
 ├── public/
-│ ├── stylesheets/
-│ └── JS scripts
+│   ├── stylesheets/
+│   └── JS scripts
 ├── utils/
-│ └── geocoder.js
+│   └── geocoder.js
 ├── .env
 ├── app.js
 └── README.md
+```
 
 ---
 
 ## How to Run Locally
 
-1. **Clone the Repository**
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/your-username/StayScape.git
 cd StayScape
+```
 
-2. **Install Dependencies**
+### 2. Install Dependencies
+
 ```bash
 npm install
+```
+
+### 3. Setup Environment Variables
+
+Create a `.env` file in the root directory and add the following:
+
+```env
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_KEY=your_key
+CLOUDINARY_SECRET=your_secret
+MAPBOX_TOKEN=your_mapbox_token
+DB_URL=mongodb+srv://your-db-url
+SECRET=session_secret
+```
+
+### 4. Start the Server
+
+```bash
+npm start
+```
+
+### 5. Access the Application
+
+Open your browser at: [http://localhost:8080](http://localhost:8080)
+
+---
+
+## Future Enhancements
+
+- Calendar-based booking system
+- Reviews and star rating functionality
+- Email notifications for account and activity updates
+- Payment integration with Stripe or PayPal
+- Wishlist or save-for-later system
+
+---
+
+## Contact
+
+For queries or collaboration:
+
+**Sumer Thakur**  
+📧 Email: thakur.sum@northeastern.edu  
+🔗 [LinkedIn](https://www.linkedin.com/in/sumer-thakur-658808288/)  
+💻 [GitHub](https://github.com/SumerThakur1771)
+
