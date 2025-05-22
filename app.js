@@ -28,6 +28,11 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+app.use((req, res, next) => {
+  res.locals.currentRoute = req.path;
+  next();
+});
+
 main()
   .then(() => {
     console.log("connected to DB");
