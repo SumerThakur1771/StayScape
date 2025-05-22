@@ -6,7 +6,7 @@ StayScape is a full-stack travel accommodation platform that allows users to exp
 
 ## Live Demo
 
-Visit the deployed application: [StayScape on Render](https://stayscape-v7dj.onrender.com)
+Visit the deployed application: [StayScape on Render](https://stayscape-v7dj.onrender.com/listings)
 - Click on explore text or icon to explore the site!
 ---
 
